@@ -13,7 +13,7 @@ $('.main_slide').on('init afterChange', function (e, s, c) {
 
 $('.main_visual .btn li').on('click', function () {
     var idx = $(this).index();
-    $('.main_slide').slic('slickGoTo', idx);
+    $('.main_slide').slick('slickGoTo', idx);
 })
 
 $('.main_slide').slick({
@@ -51,8 +51,26 @@ $('.ytp_main i:last-child').on('click', function () {
     $('#bgmovie').YTPPlay();
 })
 
+
 $('.product_slide').slick({
     slidesToShow: 5,
     centerMode: true,
     arrows: false,
+})
+
+$('.product_slide').on('afterChange', function (e, s, c) {
+    $('.main_product .dots li').eq(c).addClass('on').siblings().removeClass('on')
+})
+
+$('.main_product i:first-child').on('click', function () {
+    $('.product_slide').slick('slickPrev')
+})
+
+$('.main_product i:last-child').on('click', function () {
+    $('.product_slide').slick('slickNext')
+})
+
+$('.main_product .dots li').on('click', function () {
+    var idx = $(this).index();
+    $('product_slide').slick('slickGoTo', idx)
 })
