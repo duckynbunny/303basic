@@ -60,17 +60,32 @@ $('.product_slide').slick({
 
 $('.product_slide').on('afterChange', function (e, s, c) {
     $('.main_product .dots li').eq(c).addClass('on').siblings().removeClass('on')
-})
+});
 
 $('.main_product i:first-child').on('click', function () {
     $('.product_slide').slick('slickPrev')
-})
+});
 
 $('.main_product i:last-child').on('click', function () {
     $('.product_slide').slick('slickNext')
-})
+});
 
 $('.main_product .dots li').on('click', function () {
     var idx = $(this).index();
     $('product_slide').slick('slickGoTo', idx)
+});
+
+$('.main_customer .tab_menu li').on('click', function () {
+    var i = $(this).index();
+    $('.main_customer .tab_content>li').eq(i).addClass('on')
+        .siblings().removeClass('on')
+    $(this)
+        .siblings().removeClass('on')
+});
+
+
+$('#link').on('change', function () {
+    console.log($(this).val())
+    var lnk = $(this).val()
+    lnk && window.open(lnk)
 })
